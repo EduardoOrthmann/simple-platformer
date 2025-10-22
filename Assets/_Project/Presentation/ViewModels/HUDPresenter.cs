@@ -1,8 +1,8 @@
-﻿using Core.Domain;
-using Core.Shared;
+﻿using _Project.Core.Domain;
+using _Project.Core.Shared;
 using Zenject;
 
-namespace Presentation.ViewModels
+namespace _Project.Presentation.ViewModels
 {
     public class HUDPresenter
     {
@@ -15,7 +15,7 @@ namespace Presentation.ViewModels
             _scoreManager = scoreManager;
 
             // Subscribe to events to update the UI
-            // signalBus.Subscribe<ScoreUpdatedSignal>(OnScoreUpdated);
+            signalBus.Subscribe<ScoreUpdatedSignal>(OnScoreUpdated);
 
             // Initialize UI
             OnScoreUpdated();

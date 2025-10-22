@@ -1,7 +1,7 @@
-﻿using Core.Shared;
+﻿using _Project.Core.Shared;
 using Zenject;
 
-namespace Core.Application
+namespace _Project.Core.Application
 {
     public class GameStateMachine
     {

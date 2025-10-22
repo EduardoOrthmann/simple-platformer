@@ -1,4 +1,4 @@
-﻿namespace Core.Shared
+﻿namespace _Project.Core.Shared
 {
     public class ScoreUpdatedSignal
     {

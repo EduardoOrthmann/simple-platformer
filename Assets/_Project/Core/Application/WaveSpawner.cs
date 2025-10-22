@@ -1,7 +1,7 @@
-﻿using Presentation.Components;
+﻿using _Project.Presentation.Components;
 using Zenject;
 
-namespace Core.Domain
+namespace _Project.Core.Application
 {
     public class WaveSpawner : ITickable
     {
@@ -18,7 +18,7 @@ namespace Core.Domain
             // Simplified spawn logic: spawn one enemy every 5 seconds
             if (UnityEngine.Time.frameCount % 300 == 0)
             {
-                SpawnEnemy();
+                // SpawnEnemy();
             }
         }
 

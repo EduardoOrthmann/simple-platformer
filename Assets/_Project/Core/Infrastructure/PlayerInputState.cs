@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core.Infrastructure
+namespace _Project.Core.Infrastructure
 {
     public class PlayerInputState
     {

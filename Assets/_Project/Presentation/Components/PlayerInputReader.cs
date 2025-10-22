@@ -1,10 +1,10 @@
-﻿using Core.Infrastructure;
+﻿using _Project.Core.Infrastructure;
 using Generated.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Presentation.Components
+namespace _Project.Presentation.Components
 {
     public class PlayerInputReader : MonoBehaviour, PlayerControls.IPlayerActions
     {

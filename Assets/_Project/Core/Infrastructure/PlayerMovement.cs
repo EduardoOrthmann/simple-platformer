@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core.Infrastructure
+namespace _Project.Core.Infrastructure
 {
     public class PlayerMovement
     {
@@ -17,7 +17,7 @@ namespace Core.Infrastructure
 
         public void Move()
         {
-            _rigidbody.linearVelocity = _inputState.MoveDirection.normalized * _speed;
+            _rigidbody.linearVelocityX = _inputState.MoveDirection.x * _speed;
         }
     }
 }

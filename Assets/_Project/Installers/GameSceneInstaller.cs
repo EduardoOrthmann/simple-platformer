@@ -1,14 +1,13 @@
-﻿using Core.Application;
-using Core.Application.Player;
-using Core.Domain;
-using Core.Infrastructure;
-using Core.Shared;
-using Presentation.Components;
-using Presentation.ViewModels;
+﻿using _Project.Core.Application;
+using _Project.Core.Domain;
+using _Project.Core.Infrastructure;
+using _Project.Core.Shared;
+using _Project.Presentation.Components;
+using _Project.Presentation.ViewModels;
 using UnityEngine;
 using Zenject;
 
-namespace Installers
+namespace _Project.Installers
 {
     public class GameSceneInstaller : MonoInstaller
     {

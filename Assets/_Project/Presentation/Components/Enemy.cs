@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Presentation.Components
+namespace _Project.Presentation.Components
 {
     public class Enemy : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Core.Domain
+﻿namespace _Project.Core.Domain
 {
     public class ScoreManager
     {

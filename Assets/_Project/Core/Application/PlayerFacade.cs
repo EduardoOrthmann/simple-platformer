@@ -1,9 +1,9 @@
-﻿using Core.Application.Player;
-using Core.Infrastructure;
-using Presentation.Components;
+﻿using _Project.Core.Domain;
+using _Project.Core.Infrastructure;
+using _Project.Presentation.Components;
 using Zenject;
 
-namespace Core.Application
+namespace _Project.Core.Application
 {
     public class PlayerFacade : IFixedTickable
     {

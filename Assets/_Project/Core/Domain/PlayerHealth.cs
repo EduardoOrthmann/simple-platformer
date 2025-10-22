@@ -1,12 +1,12 @@
-﻿using Core.Shared;
+﻿using _Project.Core.Shared;
 using Zenject;
 
-namespace Core.Application.Player
+namespace _Project.Core.Domain
 {
     public class PlayerHealth
     {
         private readonly SignalBus _signalBus;
-        public int CurrentHealth { get; private set; }
+        private int CurrentHealth { get; set; }
 
         public PlayerHealth(int startingHealth, SignalBus signalBus)
         {
