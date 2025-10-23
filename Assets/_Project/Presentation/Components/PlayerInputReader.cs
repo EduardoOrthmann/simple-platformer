@@ -21,14 +21,19 @@ namespace _Project.Presentation.Components
         {
             _playerControls = new PlayerControls();
             _playerControls.Player.SetCallbacks(this);
+            _playerControls.Player.Enable();
         }
 
-        private void OnEnable() => _playerControls.Player.Enable();
-        private void OnDisable() => _playerControls.Player.Disable();
+        private void OnDisable() => _playerControls.Disable();
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            _inputState.MoveDirection = context.ReadValue<Vector2>();
+            _inputState.Move = context.ReadValue<Vector2>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            _inputState.JumpPressed = context.started;
         }
     }
 }
