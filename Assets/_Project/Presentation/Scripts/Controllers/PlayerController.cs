@@ -4,7 +4,7 @@ using _Project.Domain.Entities;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Presentation.Controllers
+namespace _Project.Presentation.Scripts.Controllers
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
@@ -26,8 +26,8 @@ namespace _Project.Presentation.Controllers
 
         private void FixedUpdate()
         {
-            if (_input.Move != Vector2.zero)
-                _useCase.MovePlayer(transform, _input.Move, _playerData.speed);
+            _useCase.MovePlayer(transform, _input.Move, _playerData.speed);
+            GetComponent<SpriteRenderer>().flipX = _input.Move.x < 0;
 
             if (_input.JumpPressed)
             {

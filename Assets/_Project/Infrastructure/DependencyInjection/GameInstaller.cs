@@ -3,6 +3,7 @@ using _Project.Application.States;
 using _Project.Application.UseCases;
 using _Project.Domain.Entities;
 using _Project.Infrastructure.Services;
+using _Project.Presentation.Scripts.States;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +24,8 @@ namespace _Project.Infrastructure.DependencyInjection
 
             Container.Bind<PlayerData>().FromInstance(playerData).AsSingle();
             Container.Bind<PlayerUseCase>().AsTransient();
+
+            Container.Bind<PlayerAnimationState>().AsSingle();
         }
     }
 }

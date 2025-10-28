@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2665862840787360744}
   - component: {fileID: 4321658682378485190}
   - component: {fileID: 1225315231259431492}
-  - component: {fileID: 4456445483058290978}
+  - component: {fileID: 6384059004841304249}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -219,8 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f2fa21d0e14bb7a1e2f36bba399d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Presentation.Animators.PlayerAnimatorSystem
-  playerView: {fileID: 4456445483058290978}
---- !u!114 &4456445483058290978
+--- !u!114 &6384059004841304249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,6 +228,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8424401930263451750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572f5d970b674e208b4851ce403f3e29, type: 3}
+  m_Script: {fileID: 11500000, guid: 4497712f1d5248dea810d1d6b1b3c57f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Presentation.Views.PlayerView
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Presentation.Scripts.StateHandlers.GroundCheckSystem

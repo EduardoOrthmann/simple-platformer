@@ -2,10 +2,10 @@
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Presentation.StateHandlers
+namespace _Project.Presentation.Scripts.StateHandlers
 {
     [RequireComponent(typeof(Collider2D))]
-    public class GroundCheckHandler : MonoBehaviour
+    public class GroundCheckSystem : MonoBehaviour
     {
         [Inject] private PlayerState _playerState;
 

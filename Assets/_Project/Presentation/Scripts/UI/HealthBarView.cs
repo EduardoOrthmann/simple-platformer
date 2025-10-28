@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Presentation.UI
+namespace _Project.Presentation.Scripts.UI
 {
     public class HealthBarView : MonoBehaviour
     {
