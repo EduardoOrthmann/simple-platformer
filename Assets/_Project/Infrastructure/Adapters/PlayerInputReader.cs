@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Project.Infrastructure.Adapters
 {
-    public class PlayerInputReader : MonoBehaviour, PlayerControls.IPlayerActions
+    public class PlayerInputReader : MonoBehaviour, PlayerControls.IGameplayActions
     {
         private PlayerControls _controls;
         private PlayerInputState _inputState;
@@ -16,7 +16,7 @@ namespace _Project.Infrastructure.Adapters
         {
             _inputState = state;
             _controls = new PlayerControls();
-            _controls.Player.SetCallbacks(this);
+            _controls.Gameplay.SetCallbacks(this);
             _controls.Enable();
         }
 

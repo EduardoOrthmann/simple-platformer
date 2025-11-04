@@ -91,7 +91,7 @@ namespace Generated.Input
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Gameplay"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -307,6 +307,15 @@ namespace Generated.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e53007f-71fd-4eb1-aaaf-2b6691217393"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -617,6 +626,28 @@ namespace Generated.Input
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46e7519a-6c2d-4f9b-9384-68e86217b203"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3baf062-03c7-442f-ad4c-81cdcf38297c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -684,10 +715,10 @@ namespace Generated.Input
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            // Gameplay
+            m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+            m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+            m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -695,11 +726,12 @@ namespace Generated.Input
             m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
             m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
             m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
+            m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
         {
-            UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerControls.Player.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, PlayerControls.Gameplay.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControls.UI.Disable() has not been called.");
         }
 
@@ -773,34 +805,34 @@ namespace Generated.Input
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Jump;
+        // Gameplay
+        private readonly InputActionMap m_Gameplay;
+        private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+        private readonly InputAction m_Gameplay_Move;
+        private readonly InputAction m_Gameplay_Jump;
         /// <summary>
-        /// Provides access to input actions defined in input action map "Player".
+        /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
-        public struct PlayerActions
+        public struct GameplayActions
         {
             private @PlayerControls m_Wrapper;
 
             /// <summary>
             /// Construct a new instance of the input action map wrapper class.
             /// </summary>
-            public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "Player/Move".
+            /// Provides access to the underlying input action "Gameplay/Move".
             /// </summary>
-            public InputAction @Move => m_Wrapper.m_Player_Move;
+            public InputAction @Move => m_Wrapper.m_Gameplay_Move;
             /// <summary>
-            /// Provides access to the underlying input action "Player/Jump".
+            /// Provides access to the underlying input action "Gameplay/Jump".
             /// </summary>
-            public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
             public void Enable() { Get().Enable(); }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -808,9 +840,9 @@ namespace Generated.Input
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
             public bool enabled => Get().enabled;
             /// <summary>
-            /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
+            /// Implicitly converts an <see ref="GameplayActions" /> to an <see ref="InputActionMap" /> instance.
             /// </summary>
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+            public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
             /// <summary>
             /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
             /// </summary>
@@ -818,11 +850,11 @@ namespace Generated.Input
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
             /// </remarks>
-            /// <seealso cref="PlayerActions" />
-            public void AddCallbacks(IPlayerActions instance)
+            /// <seealso cref="GameplayActions" />
+            public void AddCallbacks(IGameplayActions instance)
             {
-                if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+                if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -837,8 +869,8 @@ namespace Generated.Input
             /// <remarks>
             /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
             /// </remarks>
-            /// <seealso cref="PlayerActions" />
-            private void UnregisterCallbacks(IPlayerActions instance)
+            /// <seealso cref="GameplayActions" />
+            private void UnregisterCallbacks(IGameplayActions instance)
             {
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
@@ -849,12 +881,12 @@ namespace Generated.Input
             }
 
             /// <summary>
-            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />.
             /// </summary>
-            /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-            public void RemoveCallbacks(IPlayerActions instance)
+            /// <seealso cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />
+            public void RemoveCallbacks(IGameplayActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
@@ -864,21 +896,21 @@ namespace Generated.Input
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
             /// </remarks>
-            /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-            /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-            /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-            public void SetCallbacks(IPlayerActions instance)
+            /// <seealso cref="GameplayActions.AddCallbacks(IGameplayActions)" />
+            /// <seealso cref="GameplayActions.RemoveCallbacks(IGameplayActions)" />
+            /// <seealso cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />
+            public void SetCallbacks(IGameplayActions instance)
             {
-                foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
         /// <summary>
-        /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
+        /// Provides a new <see cref="GameplayActions" /> instance referencing this action map.
         /// </summary>
-        public PlayerActions @Player => new PlayerActions(this);
+        public GameplayActions @Gameplay => new GameplayActions(this);
 
         // UI
         private readonly InputActionMap m_UI;
@@ -888,6 +920,7 @@ namespace Generated.Input
         private readonly InputAction m_UI_Cancel;
         private readonly InputAction m_UI_Point;
         private readonly InputAction m_UI_Click;
+        private readonly InputAction m_UI_Pause;
         /// <summary>
         /// Provides access to input actions defined in input action map "UI".
         /// </summary>
@@ -919,6 +952,10 @@ namespace Generated.Input
             /// Provides access to the underlying input action "UI/Click".
             /// </summary>
             public InputAction @Click => m_Wrapper.m_UI_Click;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Pause".
+            /// </summary>
+            public InputAction @Pause => m_Wrapper.m_UI_Pause;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -960,6 +997,9 @@ namespace Generated.Input
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             /// <summary>
@@ -986,6 +1026,9 @@ namespace Generated.Input
                 @Click.started -= instance.OnClick;
                 @Click.performed -= instance.OnClick;
                 @Click.canceled -= instance.OnClick;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             /// <summary>
@@ -1085,11 +1128,11 @@ namespace Generated.Input
             }
         }
         /// <summary>
-        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gameplay" which allows adding and removing callbacks.
         /// </summary>
-        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-        public interface IPlayerActions
+        /// <seealso cref="GameplayActions.AddCallbacks(IGameplayActions)" />
+        /// <seealso cref="GameplayActions.RemoveCallbacks(IGameplayActions)" />
+        public interface IGameplayActions
         {
             /// <summary>
             /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -1148,6 +1191,13 @@ namespace Generated.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnClick(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }
