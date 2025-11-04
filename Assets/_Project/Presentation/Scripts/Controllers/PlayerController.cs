@@ -13,6 +13,7 @@ namespace _Project.Presentation.Scripts.Controllers
         private PlayerUseCase _useCase;
         private PlayerData _playerData;
         private Rigidbody2D _rb;
+        private SpriteRenderer _spriteRenderer;
 
         [Inject]
         public void Construct(PlayerInputState input, PlayerUseCase useCase, PlayerData playerData)
@@ -22,12 +23,17 @@ namespace _Project.Presentation.Scripts.Controllers
             _playerData = playerData;
         }
 
-        private void Awake() => _rb = GetComponent<Rigidbody2D>();
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         private void FixedUpdate()
         {
             _useCase.MovePlayer(transform, _input.Move, _playerData.speed);
-            GetComponent<SpriteRenderer>().flipX = _input.Move.x < 0;
+
+            if (Mathf.Abs(_input.Move.x) > 0.01f) _spriteRenderer.flipX = _input.Move.x < 0;
 
             if (_input.JumpPressed)
             {
@@ -35,7 +41,7 @@ namespace _Project.Presentation.Scripts.Controllers
                 _input.JumpPressed = false;
             }
 
-            _useCase.UpdateFallingState(_rb);
+            _useCase.UpdateJumpAndFallState(_rb);
         }
     }
 }

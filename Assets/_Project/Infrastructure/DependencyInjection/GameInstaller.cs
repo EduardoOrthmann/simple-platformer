@@ -19,7 +19,6 @@ namespace _Project.Infrastructure.DependencyInjection
             Container.Bind<PlayerState>().AsSingle();
 
             Container.Bind<IMovementService>().To<MovementService>().AsSingle();
-            Container.Bind<IWeaponService>().To<WeaponService>().AsSingle();
             Container.Bind<IHealthService>().To<HealthService>().AsSingle();
 
             Container.Bind<PlayerData>().FromInstance(playerData).AsSingle();
