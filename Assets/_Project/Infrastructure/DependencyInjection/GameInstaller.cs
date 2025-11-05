@@ -41,6 +41,9 @@ namespace _Project.Infrastructure.DependencyInjection
             Container.Bind<GameInputService>().AsSingle();
 
             // UI Views
+            Container.Bind<GameWorld>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
+
             Container.Bind<UIRoot>().FromInstance(uiRootInstance).AsSingle();
             Container.Bind<HealthBarView>().FromInstance(uiRootInstance.GetComponentInChildren<HealthBarView>()).AsSingle();
 
@@ -49,7 +52,7 @@ namespace _Project.Infrastructure.DependencyInjection
             Container.Bind<IGameState>().To<PlayingState>().AsSingle();
             Container.Bind<IGameState>().To<PausedState>().AsSingle();
 
-            Container.Bind<GameController>().FromComponentOn(this.gameObject).AsSingle();
+            Container.Bind<GameController>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

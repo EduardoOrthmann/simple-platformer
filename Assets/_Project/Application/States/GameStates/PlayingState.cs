@@ -21,6 +21,7 @@ namespace _Project.Application.States.GameStates
 
         public void Enter()
         {
+            Debug.Log("Entering Playing State");
             _uiRoot.HUDPanel.SetActive(true);
             _uiRoot.PauseMenuPanel.SetActive(false);
             _gameWorld.gameObject.SetActive(true);

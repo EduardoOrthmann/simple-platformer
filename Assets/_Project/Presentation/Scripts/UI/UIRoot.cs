@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Project.Presentation.Scripts.UI
 {
@@ -16,6 +17,12 @@ namespace _Project.Presentation.Scripts.UI
         [Header("Pause Menu Elements")]
         [SerializeField] private Button resumeButton;
         [SerializeField] private Button quitToMenuButton;
+
+        [Inject]
+        public void Construct(Camera mainCamera)
+        {
+            GetComponent<Canvas>().worldCamera = mainCamera;
+        }
 
         public GameObject MainMenuPanel => mainMenuPanel;
         public GameObject HUDPanel => hudPanel;

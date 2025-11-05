@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5700924156797586644}
   - component: {fileID: 6778183270086672942}
-  - component: {fileID: 7002132397997584408}
   m_Layer: 0
   m_Name: GameInstaller
   m_TagString: Untagged
@@ -48,18 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Installers.GameSceneInstaller
   playerData: {fileID: 11400000, guid: 39c56495f8d860b4fbd2e9c0b5f08e1d, type: 2}
   uiRootInstance: {fileID: 1496832209117909917}
---- !u!114 &7002132397997584408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623861770820612504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255c65ada61d441a905181e0c3ac9182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Project.Presentation.Scripts.Controllers.GameController
 --- !u!1001 &2955853906924951278
 PrefabInstance:
   m_ObjectHideFlags: 0
